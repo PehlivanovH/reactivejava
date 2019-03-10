@@ -14,3 +14,6 @@
 
 	Eine Spring WebFlux-Webanwendung, die ein reaktives API anbietet.
 	Kann zum Beispiel über einen Webclient getestet werden, siehe Unit Tests.
+	
+	1. SpringBoot Application starten - siehe Klasse Application.
+	2. Unit Tests mit WebClient ausführen.
