@@ -5,18 +5,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/superhero")
 public class FluxRestController {
 
-    private final EmployeeRepository employeeRepository = new EmployeeRepository();
+    private final Repository repository = new Repository();
+    private final MutationReactor mutationReactor = new MutationReactor();
 
     @GetMapping("/{id}")
-    private Flux<Employee> getEmployeeByDepartment(@PathVariable String id) {
-        System.out.println("GET findeEmpoyeesByDepartment " + id);
-
-        return employeeRepository.findeEmpoyeesByDepartment(id);
+    private Flux<Mutant> getPeople(@PathVariable String id) {
+        return repository.findPeopleWitheGeneX()
+                .map(person -> person.name)
+                .flatMap(mutationReactor::createSuperhero);
     }
 }
