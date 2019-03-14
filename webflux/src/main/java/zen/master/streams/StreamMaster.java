@@ -16,6 +16,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import org.json.JSONException;
 import org.json.JSONObject;
+import reactor.core.publisher.DirectProcessor;
+import reactor.core.publisher.FluxProcessor;
+import reactor.core.publisher.FluxSink;
 
 public class StreamMaster {
 
@@ -112,5 +115,12 @@ public class StreamMaster {
         System.out.println(response.toString());
         //Read JSON response and print
         JSONObject myResponse = new JSONObject(response.toString());
+
+
+        /**
+         * Create publisher
+         */
+        FluxProcessor publisher = DirectProcessor.create().serialize();
+        FluxSink sink = publisher.sink();
     }
 }
